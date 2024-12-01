@@ -18,6 +18,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/users")
+//@CrossOrigin(origins = "http://example.com", maxAge = 3600)
 public class UserController {
 
     final UserService userService;
