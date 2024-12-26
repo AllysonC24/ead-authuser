@@ -15,8 +15,8 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<ErrorRecordResponse> handleNotFoundException(NotFoundException ex) {
-        var errorRecordResponseResponse = new ErrorRecordResponse(HttpStatus.NOT_FOUND.value(), ex.getMessage(), null);
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorRecordResponseResponse);
+        var errorRecordResponse = new ErrorRecordResponse(HttpStatus.NOT_FOUND.value(), ex.getMessage(), null);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorRecordResponse);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -27,7 +27,7 @@ public class GlobalExceptionHandler {
            String errorMessage = error.getDefaultMessage();
            errors.put(fieldName, errorMessage);
         });
-        var errorRecordResponseResponse = new ErrorRecordResponse(HttpStatus.BAD_REQUEST.value(), "Error: Validation failed", errors);
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorRecordResponseResponse);
+        var errorRecordResponse = new ErrorRecordResponse(HttpStatus.BAD_REQUEST.value(), "Error: Validation failed", errors);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorRecordResponse);
     }
 }
